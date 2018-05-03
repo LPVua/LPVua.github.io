@@ -1,0 +1,37 @@
+{
+  "name": "my-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "parcel src/index.html --target=browser",
+    "build": "parcel build src/index.html --target=browser"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-react-jsx": "6.24.1",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-preact": "1.1.0",
+    "eslint": "4.11.0",
+    "eslint-config-google": "0.9.1",
+    "eslint-config-standard": "10.2.1",
+    "eslint-config-standard-preact": "1.1.6",
+    "eslint-loader": "1.9.0",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-node": "5.2.1",
+    "eslint-plugin-promise": "3.6.0",
+    "eslint-plugin-react": "7.4.0",
+    "eslint-plugin-standard": "3.0.1",
+    "parcel-bundler": "1.7.1",
+    "preact": "8.2.9",
+    "prismic-javascript": "1.5.0-beta.2",
+    "xstate": "3.2.1"
+  },
+  "devDependencies": {
+    "node-sass": "4.9.0"
+  }
+}

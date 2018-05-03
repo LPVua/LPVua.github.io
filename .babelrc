@@ -1,0 +1,4 @@
+{
+  "presets": ["env", "preact"],
+  "plugins": ["transform-object-rest-spread"]
+}
