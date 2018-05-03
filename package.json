@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "parcel src/index.html --target=browser -d docs",
-    "build": "parcel build src/index.html --target=browser -d docs"
+    "run": "parcel src/index.html --target=browser -d ./",
+    "build": "parcel build src/index.html --target=browser -d ./"
   },
   "author": "",
   "license": "ISC",
