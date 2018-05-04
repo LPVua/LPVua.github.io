@@ -39,10 +39,7 @@ img {
 .header {
   display: flex;
   padding: 1.5rem 2.25rem;
-
-  @media all and (max-width: 30rem) {
-    flex-direction: column;
-  }
+  flex-direction: column;
 }
 
 .header_left {
@@ -59,6 +56,7 @@ img {
 .header_right {
   display: flex;
   flex-direction: column;
+  margin-top: .5rem;
 }
 
 .header_name {
@@ -94,6 +92,7 @@ img {
 }
 
 .header_contact-loading {
+  margin-top: .25rem;
   height: 1.375rem;
   background-color: #ececec;
   border-radius: .1875rem;
@@ -137,6 +136,18 @@ img {
 .group_tag {
   margin-right: .5rem;
   margin-bottom: .5rem;
+}
+
+.button-contactme {
+  display: inline-flex;
+  width: 110px;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  background: rgba(84,177,78,.8);
+  color: white;
+  margin-top: 8px;
 }
 
 .tag {
