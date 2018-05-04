@@ -1,4 +1,6 @@
 import {h} from 'preact'
+import {Logo} from './logo'
+
 const GroupTitle = ({children, isLoading}) => (
   <div class={
     `group_title ${isLoading ? 'group_title-loading' : ''}`
@@ -19,16 +21,21 @@ export const CvTemplate = ({
 }) => (
   <div>
     <div class='header'>
-      <div class='header_left'>
-        <div class={
-          `header_name ${isLoading ? 'header_name-loading' : ''}`
-        }>
-          Pavlo Lompas
+      <div class='header_maininfo'>
+        <div class='header_logo'>
+          <Logo />
         </div>
-        <div class={
-          `header_description 
+        <div class='header_left'>
+          <div class={
+            `header_name ${isLoading ? 'header_name-loading' : ''}`
+          }>
+          Pavlo Lompas
+          </div>
+          <div class={
+            `header_description 
             ${isLoading ? 'header_description-loading' : ''}`
-        }>Frontend developer</div>
+          }>Frontend developer</div>
+        </div>
       </div>
       <div class='header_right'>
         {

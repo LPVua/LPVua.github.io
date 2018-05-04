@@ -40,6 +40,20 @@ img {
   display: flex;
   padding: 1.5rem 2.25rem;
   flex-direction: column;
+  align-items: center;
+}
+
+.header_maininfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header_logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: .5rem;
 }
 
 .header_left {
@@ -47,6 +61,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 
   @media all and (max-width: 30rem) {
     margin-bottom: 0.75rem;
