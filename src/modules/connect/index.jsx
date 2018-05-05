@@ -1,51 +1,41 @@
 import {h, Component} from 'preact'
 
-export const connect = (machine, commands) => (ConnectedComponent) =>
+export const connect = (model, eventHandlers) => (ConnectedComponent) =>
   class ModelComponent extends Component {
     /**
      * Constructor
      */
     constructor() {
       super()
-      this.transit = this.transit.bind(this)
       this.state = {
-        machineState: machine.initialState,
-        transit: this.transit,
+        ...model.data,
+        ...eventHandlers,
       }
     }
 
     /**
-     * Make transition from one state to another
-     *
-     * @param {object} event
+     * @inheritDoc
      */
-    transit(event) {
-      const currentState = this.state.machineState.value
-      const nextState = machine.transition(currentState, event.type)
+    componentWillMount() {
+      const updateData = (oldUpdater) => (data) => {
+        oldUpdater(data)
 
-      const componentState = nextState.actions
-        .reduce(
-          (state, action) => this.command(action, event) || state,
-          undefined
-        )
+        this.setState({
+          ...this.state,
+          ...model.data,
+        })
+      }
 
-      this.setState({
-        machineState: nextState,
-        ...componentState,
-      })
+      // Set state on every model data update
+      model.updateData = updateData(model.updateData)
     }
 
     /**
-     * Command
-     *
-     * @param {string} action
-     * @param {object} event
-     *
-     * @return {null}
+     * @inheritDoc
      */
-    command(action, event) {
-      return commands[action] &&
-        commands[action](this.state, this.transit.bind(this))(event.payload)
+    componentWillUnmount() {
+      // Reset model's update data to previous state
+      model.updateData = this.oldUpdater
     }
 
     /**

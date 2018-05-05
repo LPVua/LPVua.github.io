@@ -1,6 +1,25 @@
 import {connect} from '../connect'
-import {machine} from './machine'
 import {commands} from './commands'
-import {CvContainer} from './container'
+import {CvTemplate} from './template'
+import {CvStatechart} from './statechart'
+import {Model} from './model'
+import {ControlFlow} from '../control-flow'
 
-export const Cv = connect(machine, commands)(CvContainer)
+const CvControlFlow = ControlFlow(
+  CvStatechart,
+  commands,
+)
+
+const eventHandlers = {
+  onClickContactMe: () => CvControlFlow.transit({
+    event: 'toggleContacts',
+  }),
+}
+
+if (Model.data.iddle) {
+  CvControlFlow.transit({
+    event: 'getData',
+  })
+}
+
+export const Cv = connect(Model, eventHandlers)(CvTemplate)

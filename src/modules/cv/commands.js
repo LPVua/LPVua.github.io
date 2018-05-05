@@ -1,7 +1,30 @@
 import {Api} from '../api'
 
+import {Model} from './model'
+
 export const commands = {
-  fetchData: (state, transit) => () => {
+  hideLoaders: () => () => {
+    Model.updateData({
+      isLoading: false,
+    })
+  },
+  showContacts: () => () => {
+    Model.updateData({
+      showContacts: true,
+      showContactMe: false,
+    })
+  },
+  hideContacts: () => () => {
+    Model.updateData({
+      showContacts: false,
+      showContactMe: true,
+    })
+  },
+  fetchData: (transit) => () => {
+    Model.updateData({
+      isLoading: true,
+    })
+
     Api(
       (api) => api.query('', {
         pageSize: 100,
@@ -9,7 +32,7 @@ export const commands = {
     ).then(
       (response) => {
         transit({
-          type: 'searchSuccess',
+          event: 'fetchSuccess',
           payload: response,
         })
       })
@@ -50,7 +73,7 @@ export const commands = {
       contacts,
     }
 
-    return data
+    Model.updateData(data)
   },
   stats: () => () => {
     window.gtag('event', 'revealContacts')
